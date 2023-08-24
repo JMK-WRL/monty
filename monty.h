@@ -37,7 +37,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 void custom_push(stack_t **stack, unsigned int line_num);
 void custom_pall(stack_t *stack);
 void custom_pint(stack_t *stack, unsigned int line_num);
