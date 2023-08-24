@@ -1,5 +1,5 @@
-#ifndef STACK_OP_H
-#define STACK_OP_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stddef.h>
