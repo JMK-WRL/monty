@@ -1,25 +1,34 @@
 #include "monty.h"
 
 /**
- * custom_swap - swaps the top stacks
- * @stack: stack to be swaped
- * @line_num: error line
+ * custom_swap - swap the two top elements
+ * @stack_head: pointer to stack
+ * @line_num: line number in file
+ * Return: nothing
  */
 
-void custom_swap(stack_t **stack, unsigned int line_num)
+void custom_swap(stack_t **stack_head, unsigned int line_num)
 {
-	stack_t *top_node = *stack;
-	stack_t *second_top_node = top_node->next;
+	stack_t *current_node;
+	int stack_length = 0, temp;
 
+	current_node = *stack_head;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	while (current_node)
 	{
-		fprintf(stderr, "Line %d: can't swap, stack too short\n", line_num);
+		current_node = current_node->next;
+		stack_length++;
+	}
+	if (stack_length < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack_head);
 		exit(EXIT_FAILURE);
 	}
-
-	top_node->next = second_top_node->next;
-	second_top_node->next = top_node;
-
-	*stack = second_top_node;
+	current_node = *stack_head;
+	temp = current_node->n;
+	current_node->n = current_node->next->n;
+	current_node->next->n = temp;
 }

@@ -1,15 +1,25 @@
 #include "monty.h"
 
 /**
- * custom_pall - function that prints all values on the stack
- * @stack: parameter
+ * custom_pall - print the elements fo the stack
+ * @stack_head: pointer to the stack head
+ * @line_num: line number
+ * Return: nothing
  */
 
-void custom_pall(stack_t *stack)
+void custom_pall(stack_t **stack_head, unsigned int line_num)
 {
-	while (stack != NULL)
+	stack_t *current_node;
+	(void)line_num;
+
+	current_node = *stack_head;
+	if (current_node == NULL)
 	{
-		printf("%d\n", stack->n);
-		stack = stack->next;
+		return;
+	}
+	while (current_node)
+	{
+		printf("%d\n", current_node->n);
+		current_node = current_node->next;
 	}
 }

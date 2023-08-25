@@ -1,26 +1,34 @@
 #include "monty.h"
 
 /**
- * custom_add - opcode that adsds the top two elements
- * @stack: stack to add
- * @line_num: indicates the line number with an error
+ * custom_add - adds the two top elements in a stack
+ * @stack_head: pointer to the stack's head
+ * @line_num: line number in the Monty file
+ * Return: No explicit return return value
  */
 
-void custom_add(stack_t **stack, unsigned int line_num)
+void custom_add(stack_t **stack_head, unsigned int line_num)
 {
-	int top_value;
-	int second_top_value;
+	stack_t *temp_stack;
+	int stack_length = 0, sum;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	temp_stack = *stack_head;
+	while (temp_stack)
 	{
-		fprintf(stderr, "Line %d: can't add, stack too short\n", line_num);
+		temp_stack = temp_stack->next;
+		stack_length++;
+	}
+	if (stack_length < 2)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack_head);
 		exit(EXIT_FAILURE);
 	}
-
-	top_value = (*stack)->n;
-	second_top_value = (*stack)->next->n;
-
-	(*stack)->n = top_value + second_top_value;
-
-	custom_pop(stack, line_num);
+	temp_stack = *stack_head;
+	sum = temp_stack->n + temp_stack->next->n;
+	temp_stack->next->n = sum;
+	*stack_head = temp_stack->next;
+	free(temp_stack);
 }
