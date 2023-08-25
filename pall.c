@@ -3,7 +3,7 @@
 /**
  * pall - opcode
  * @stack: stack
- * @line_num: parameter
+ * @line_number: parameter
  */
 
 void pall(stack_t **stack, unsigned int line_number)
