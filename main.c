@@ -47,6 +47,14 @@ int main(int argc, char *argv[])
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * process_line - Process a line of Monty bytecode
+ * @line: The line of bytecode to process
+ * @stack: pointer to the stack
+ * @line_number: line number being processed
+ * Return: 0 (success, -1 (failure)
+ */
+
 int process_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char opcode[100];
@@ -69,7 +77,7 @@ int process_line(char *line, stack_t **stack, unsigned int line_number)
 		else
 		{
 			instruction_t instruction;
-			
+
 			if (strcmp(opcode, "pall") == 0)
 				instruction.f = pall;
 			else if (strcmp(opcode, "pint") == 0)
@@ -93,6 +101,11 @@ int process_line(char *line, stack_t **stack, unsigned int line_number)
 	}
 	return (0);
 }
+
+/**
+ * cleanup - Free memory allocated for the stack
+ * @stack: pointer to the stack
+ */
 
 void cleanup(stack_t **stack)
 {
