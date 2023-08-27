@@ -1,7 +1,5 @@
 #include "monty.h"
 
-stack_t *stack = NULL;
-
 /**
  * main - monty interpretor
  * @argc: arguments
@@ -16,6 +14,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	char opcode[100];
 	int value;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
