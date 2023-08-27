@@ -74,5 +74,11 @@ int main(int argc, char *argv[])
 		}
 	}
 	fclose(file);
+
+	while (stack != NULL)
+	{
+		pop(&stack, line_number);
+	}
+
 	return (0);
 }
