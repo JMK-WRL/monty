@@ -45,5 +45,7 @@ void pop(stack_t **stack, unsigned int line_numebr);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+int process_line(char *line, stack_t **stack, unsigned int line_number);
+void cleanup(stack_t **stack);
 
 #endif
